@@ -3,38 +3,68 @@
 
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 </head>
 
 <body>
-	<section><h1>Welcome to HeyBatter!</h1></section>
-
+	<h1>Welcome to heyBatter.js!</h1>
 	<main class="container-fluid" role="tabpanel">
+		<!-- AT BAT AT BAT AT BAT AT BAT AT BAT -->
+		<section class="row at-bat">
+			<section class="col-sm-4">
+				<h3>At Bat</h3>
+				<form id="hey-batter-batter">
+					<section class="form-group">
+						<label for="batting-average">Batting Average</label>
+						<input type="text" class="form-control" id="batting-average" placeholder=".300">
+					</section>
 
-		<div class="row">
-			<div class="col-sm-4">
-					<form id="hey-batter-batter">
-						<div class="form-group">
-							<label for="batting-average">Batting Average</label>
-							<input type="text" class="form-control" id="batting-average" placeholder=".300">
-						</div>
+					<section class="form-group">
+						<label for="strike-percentage">Strike Percentage</label>
+						<input type="text" class="form-control" id="strike-percentage" placeholder=".600">
+					</section>
 
-						<div class="form-group">
-							<label for="strike-percentage">Strike Percentage</label>
-							<input type="text" class="form-control" id="strike-percentage" placeholder=".600">
-						</div>
+					<button type="submit" class="btn btn-primary">Step Up To The Plate</button>
+				</form>
+			</section>
 
-						<button type="submit" class="btn btn-primary">Step Up To The Plate</button>
-					</form>
-			</div>
-
-			<div class="col-sm-8">
-			
+			<section class="col-sm-8">
 				<ul class="list-unstyled" id="outcomes">
 				</ul>
-			</div>
-		</div>
+			</section>
+		</section>
+
+		<!-- PLAYER PLAYER PLAYER PLAYER PLAYER PLAYER -->
+		<section class="row player-generator">
+			<section class="col-sm-4">
+				<h3>Team Generator</h3>
+				<button type="submit" class="btn btn-primary create-team">Create Team</button>					
+
+				<section class="col-sm-8">
+					<table class="col-sm-6 boston" id="lineups">
+
+
+					</table>
+					<table class="col-sm-6 los-angeles" id="lineups">
+					</table>					
+				</section>
+			</section>
+		</section>
 	</main>
 
+
+	<script type="text/javascript" src="./javascripts/constructors.js"></script>
+	<script type="text/javascript" src="./javascripts/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="./javascripts/atBat.js"></script>
+	<script type="text/javascript" src="./javascripts/teamGenerator.js"></script>
+	<script type="text/javascript" src="./javascripts/pageManager.js"></script>
+	
+	<script type="text/javascript">		
+		$(document).ready(function() {
+			var pageManager = new PageManager();
+			pageManager.init();	
+		});
+	</script>
 </body>
 
 </html>

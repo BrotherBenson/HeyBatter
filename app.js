@@ -11,6 +11,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
 app.use('/', routes);
+app.use(express.static('public'));
 
 var server = app.listen(3000, function () {
   var host = server.address().address;
