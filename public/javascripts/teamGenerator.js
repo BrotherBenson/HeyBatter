@@ -1,7 +1,6 @@
 TeamGenerator = function(){ };
 
 TeamGenerator.prototype.init = function () {
-	this.bindEvents();
 	console.log("PlayerGenerator.js loaded");
 };
 

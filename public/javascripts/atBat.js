@@ -1,7 +1,6 @@
 AtBat = function (){ };
 
 AtBat.prototype.init = function () {
-	this.bindEvents();
 	console.log("Heybatter.js loaded");
 };
 
