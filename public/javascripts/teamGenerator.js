@@ -12,11 +12,11 @@ TeamGenerator.prototype.bindEvents = function (){
 };
 
 TeamGenerator.prototype.generateTeams = function() {
-	var bostonPlayerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("P")];
+	var bostonPlayerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("DH")];
 	var bostonBullpenArray = [this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("SU"), this.generatePitcher("CL") ];
 	var bostonCoachArray = [this.generateCoach("Bench"), this.generateCoach("Base"), this.generateCoach("Hitting"), this.generateCoach("Pitching"), this.generateCoach("Strength & Conditioning")];
 	
-	var losAngelesPlayerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("P")];
+	var losAngelesPlayerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("DH")];
 	var losAngelesBullpenArray = [this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("SU"), this.generatePitcher("CL") ];
 	var losAngelesCoachArray = [this.generateCoach("Bench"), this.generateCoach("Base"), this.generateCoach("Hitting"), this.generateCoach("Pitching"), this.generateCoach("Strength & Conditioning")];
 
