@@ -8,7 +8,7 @@ a {
 }
 
 .row {
-	border: 1px red solid;	
+	border: 1px #999 solid;	
 	padding: 5px;
 	margin-top: 5px;
 }

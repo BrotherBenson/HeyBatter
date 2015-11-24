@@ -5,6 +5,10 @@ function Player(firstName, lastName, position, battingAvg) {
 	this.battingAvg = battingAvg
 };
 
+Player.prototype.printName = function(){
+	return this.first + ". " + this.last;
+};
+
 function Team(city, lineupArray, coachesArray) {
 	this.city = city,
 	this.lineup = lineupArray,
@@ -13,21 +17,15 @@ function Team(city, lineupArray, coachesArray) {
 
 function Coach(first, last, specialty) {
 	this.first = first,
-	this.last = last
+	this.last = last,
 	this.specialty = specialty
+};
+
+Coach.prototype.printName = function(){
+	return this.first + ". " + this.last;
 };
 
 function Umpire(first, last) {
 	this.first = first,
 	this.last = last
-};
-
-Utility = function(){};
-
-Utility.prototype.randomFromArray = function(arr){
-	return(arr[Math.floor(Math.random()*(arr.length))]);
-};
-
-Utility.prototype.randomFromRange = function(min, max){
-	return(min + Math.ceil(Math.random()*(max-min)));
 };

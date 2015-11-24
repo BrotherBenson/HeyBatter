@@ -1,7 +1,7 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var routes = require('./routes/index');
-var app = express();
 
 app.get('/', function (req, res) {
   res.render('index.ejs');

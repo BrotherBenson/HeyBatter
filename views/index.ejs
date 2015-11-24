@@ -4,15 +4,15 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 </head>
 
 <body>
-	<h1>Welcome to heyBatter.js!</h1>
 	<main class="container-fluid" role="tabpanel">
 		<!-- AT BAT AT BAT AT BAT AT BAT AT BAT -->
 		<section class="row at-bat">
 			<section class="col-sm-4">
-				<h3>At Bat</h3>
+				<h2>At Bat</h2>
 				<form id="hey-batter-batter">
 					<section class="form-group">
 						<label for="batting-average">Batting Average</label>
@@ -33,21 +33,15 @@
 				</ul>
 			</section>
 		</section>
-
 		<!-- PLAYER PLAYER PLAYER PLAYER PLAYER PLAYER -->
 		<section class="row player-generator">
-			<section class="col-sm-4">
-				<h3>Team Generator</h3>
-				<button type="submit" class="btn btn-primary create-team">Create Team</button>					
-
-				<section class="col-sm-8">
-					<table class="col-sm-6 boston" id="lineups">
-
-
-					</table>
-					<table class="col-sm-6 los-angeles" id="lineups">
-					</table>					
-				</section>
+			<section class="col-sm-2">
+				<h2>Team Generator</h2>
+				<button type="submit" class="btn btn-primary create-team">Create Teams</button>
+			</section>
+			<section class="col-sm-5 boston">
+			</section>
+			<section class="col-sm-5 los-angeles">
 			</section>
 		</section>
 	</main>
