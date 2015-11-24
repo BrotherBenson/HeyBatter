@@ -13,13 +13,15 @@ TeamGenerator.prototype.bindEvents = function (){
 
 TeamGenerator.prototype.generateTeams = function() {
 	var bostonPlayerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("P")];
+	var bostonBullpenArray = [this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("SU"), this.generatePitcher("CL") ];
 	var bostonCoachArray = [this.generateCoach("Bench"), this.generateCoach("Base"), this.generateCoach("Hitting"), this.generateCoach("Pitching"), this.generateCoach("Strength & Conditioning")];
 	
 	var losAngelesPlayerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("P")];
+	var losAngelesBullpenArray = [this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("SU"), this.generatePitcher("CL") ];
 	var losAngelesCoachArray = [this.generateCoach("Bench"), this.generateCoach("Base"), this.generateCoach("Hitting"), this.generateCoach("Pitching"), this.generateCoach("Strength & Conditioning")];
 
-	var boston = new Team("Boston", bostonPlayerArray, bostonCoachArray);
-	var losAngeles = new Team("Los Angeles", losAngelesPlayerArray, losAngelesCoachArray);
+	var boston = new Team("Boston", bostonPlayerArray, bostonBullpenArray, bostonCoachArray);
+	var losAngeles = new Team("Los Angeles", losAngelesPlayerArray, losAngelesBullpenArray, losAngelesCoachArray);
 
 	this.renderTeamTables(boston, losAngeles);
 };
@@ -36,6 +38,22 @@ TeamGenerator.prototype.generatePlayer = function(position){
 	return player;
 };
 
+TeamGenerator.prototype.generatePitcher = function(role){
+	var firstInitials = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+	var lastNames = ["SMITH", "JOHNSON", "WILLIAMS", "BROWN", "JONES", "MILLER", "DAVIS", "GARCIA", "RODRIGUEZ", "WILSON", "MARTINEZ", "ANDERSON", "TAYLOR", "THOMAS", "HERNANDEZ", "MOORE", "MARTIN", "JACKSON", "THOMPSON", "WHITE", "LOPEZ", "LEE", "GONZALEZ", "HARRIS", "CLARK", "LEWIS", "ROBINSON", "WALKER", "PEREZ", "HALL", "YOUNG", "ALLEN", "SANCHEZ", "WRIGHT", "KING", "SCOTT", "GREEN", "BAKER", "ADAMS", "NELSON", "HILL", "RAMIREZ", "CAMPBELL", "MITCHELL", "ROBERTS", "CARTER", "PHILLIPS"];
+	
+	var first = this.randomFromArray(firstInitials);
+	var last = this.randomFromArray(lastNames);
+	var role = role;
+	var wins = Math.round(2 + Math.random()*15);
+	var losses = Math.round(2 + Math.random()*15);
+	var strikePct = Math.round(.5 + Math.random()*.4);
+	var ERA = Math.round(700 + Math.random()*500)/200;
+	
+	var pitcher = new Pitcher(first, last, role, wins, losses, strikePct, ERA);
+	return pitcher;
+};
+
 TeamGenerator.prototype.generateCoach = function(specialty){
 	var firstInitials = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 	var lastNames = ["SMITH", "JOHNSON", "WILLIAMS", "BROWN", "JONES", "MILLER", "DAVIS", "GARCIA", "RODRIGUEZ", "WILSON", "MARTINEZ", "ANDERSON", "TAYLOR", "THOMAS", "HERNANDEZ", "MOORE", "MARTIN", "JACKSON", "THOMPSON", "WHITE", "LOPEZ", "LEE", "GONZALEZ", "HARRIS", "CLARK", "LEWIS", "ROBINSON", "WALKER", "PEREZ", "HALL", "YOUNG", "ALLEN", "SANCHEZ", "WRIGHT", "KING", "SCOTT", "GREEN", "BAKER", "ADAMS", "NELSON", "HILL", "RAMIREZ", "CAMPBELL", "MITCHELL", "ROBERTS", "CARTER", "PHILLIPS"];
@@ -48,28 +66,35 @@ TeamGenerator.prototype.generateCoach = function(specialty){
 };
 
 TeamGenerator.prototype.renderTeamTables = function(bos, los){
-	console.log('rendering team tables');
 	$('.boston').html(this.renderTeamTable(bos));
 	$('.los-angeles').html(this.renderTeamTable(los));
 };
 
 TeamGenerator.prototype.renderTeamTable = function(team){
-	console.log(team.lineup);
 	var teamName = "<h3>" + team.city + "</h3>";
 	var lineup = this.renderPlayersTable(team.lineup);
+	var bullpen = this.renderBullpenTable(team.bullpen);
 	var coaches = this.renderCoachesTable(team.coaches);
 
-	return teamName + lineup + coaches;
+	return teamName + lineup + bullpen + coaches;
 };
 
 TeamGenerator.prototype.renderPlayersTable = function(players){
-	console.log('Rendering player table');
-	console.log(players);
 	var answer = "<h4>Players</h4><table>" + this.renderTableHead(["Name", "Position", "AVG"]);
 	for (var i = 0; i < players.length; i++){
 		var player = players[i];
 		var line = this.renderTableRow([player.printName(), player.position, player.battingAvg]);
-		console.log(line);
+		answer = answer.concat(line);
+	}
+	answer = answer +  "</table>";
+	return answer;
+};
+
+TeamGenerator.prototype.renderBullpenTable = function(pitchers){
+	var answer = "<h4>Bullpen</h4><table>" + this.renderTableHead(["Name", "Role", "Record", "ERA"]);
+	for (var i = 0; i < pitchers.length; i++){
+		var pitcher = pitchers[i];
+		var line = this.renderTableRow([pitcher.printName(), pitcher.role, pitcher.printRecord(), pitcher.era]);
 		answer = answer.concat(line);
 	}
 	answer = answer +  "</table>";
@@ -77,8 +102,6 @@ TeamGenerator.prototype.renderPlayersTable = function(players){
 };
 
 TeamGenerator.prototype.renderCoachesTable = function(coaches){
-	console.log("rendering coach table");
-	console.log(coaches);
 	var answer = "<h4>Coaches</h4><table>"+ this.renderTableHead(["Name", "Specialty"]);
 	for (var i = 0; i < coaches.length; i++){
 		var coach = coaches[i];
@@ -113,10 +136,6 @@ TeamGenerator.prototype.randomFromArray = function(arr){
 
 TeamGenerator.prototype.randomFromRange = function(min, max){
 	return(min + Math.ceil(Math.random()*(max-min)));
-};
-
-TeamGenerator.prototype.generateGame = function(evt) {
-	evt.preventDefault();
 };
 
 
