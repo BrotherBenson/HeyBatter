@@ -48,26 +48,30 @@
 			</section>
 		</section>
 
-
-
 		<!-- GAME GAME GAME GAME GAME-->
 		<section class="row game">
 			<section class="col-sm-2">
 				<h2>Game</h2>
 				<button type="submit" class="btn btn-primary play-ball">Play ball!</button>
-			</section>
-			<section class="col-sm-2 box-score">
-			</section>
-			<section class="col-sm-8 controls">
 				<button type='submit' class='btn btn-primary batter-up'>Batter up</button>
-				<section class="col-sm-5 boston-lineup">
+				<button type='submit' class='btn btn-primary at-bat'>At Bat</button>
+			</section>
+			<section class="col-sm-4">
+				<section class="box-score">
 				</section>
-				<section class="col-sm-5 losangeles-lineup">
+				<section class="now-pitching">
+				</section>
+				<section class="now-batting">
+					<span class="batter"></span>
 				</section>
 			</section>
+			<section class="col-sm-3 boston-lineup">
+			</section>
+			<section class="col-sm-3 losangeles-lineup">
+			</section>			
 		</section>
 	</main>
-
+	<script type="text/javascript" src="./javascripts/numeral.min.js"></script>
 	<script type="text/javascript" src="./javascripts/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="./javascripts/atBat.js"></script>
 	<script type="text/javascript" src="./javascripts/coach.js"></script>

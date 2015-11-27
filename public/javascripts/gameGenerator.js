@@ -9,11 +9,6 @@ GameGenerator.prototype.bindEvents = function(){
 		'click', 
 		$.proxy(this.startGame, this)
 	);
-
-	$('.batter-up').on(
-		'click',
-		$.proxy(this.handleBatterUp, this)
-	);
 };
 
 GameGenerator.prototype.startGame = function(){
@@ -21,17 +16,15 @@ GameGenerator.prototype.startGame = function(){
 	losAngeles = this.generateLosAngeles();
 	boston = this.generateBoston();
 	game = new Game(losAngeles, boston);
+	game.bindEvents();
 	$('.boston-lineup').html(this.renderLineups(boston));
 	$('.losangeles-lineup').html(this.renderLineups(losAngeles));
 };
 
-GameGenerator.prototype.handleBatterUp = function(){
-	console.log('batter up!');
-	
-};
-
 GameGenerator.prototype.renderBoxScore = function(){
-	return "<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>R</th><th>H</th><th>E</th></tr><tr class='away-score'><td>Los Angeles</td><td class='away-1'></td><td class='away-2'></td><td class='away-3'></td><td class='away-4'></td><td class='away-5'></td><td class='away-6'></td><td class='away-7'></td><td class='away-8'></td><td class='away-8'></td><td class='away-team-runs'>0</td><td class='away-team-hits'>0</td><td class='away-team-errors'>0</td></tr><tr class = 'home-score'><td>Boston</td><td class='home-1'></td><td class='home-2'></td><td class='home-3'></td><td class='home-4'></td><td class='home-5'></td><td class='home-6'></td><td class='home-7'></td><td class='home-8'></td><td class='home-9'></td><td class='home-team-runs'>0</td><td class='home-team-hits'>0</td><td class='home-team-errors'>0</td></tr></table>";
+	$('.now-pitching').html("Pitching: <span class='pitcher'></span>");
+	$('.now-batting').html("Batting: <span class='batter'></span>");
+	return "<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>R</th><th>H</th><th>E</th></tr><tr class='away-score'><td>L.A.</td><td class='away-1'></td><td class='away-2'></td><td class='away-3'></td><td class='away-4'></td><td class='away-5'></td><td class='away-6'></td><td class='away-7'></td><td class='away-8'></td><td class='away-8'></td><td class='away-team-runs'>0</td><td class='away-team-hits'>0</td><td class='away-team-errors'>0</td></tr><tr class = 'home-score'><td>BOS</td><td class='home-1'></td><td class='home-2'></td><td class='home-3'></td><td class='home-4'></td><td class='home-5'></td><td class='home-6'></td><td class='home-7'></td><td class='home-8'></td><td class='home-9'></td><td class='home-team-runs'>0</td><td class='home-team-hits'>0</td><td class='home-team-errors'>0</td></tr></table>";
 };
 
 GameGenerator.prototype.renderLineups = function(team){
@@ -39,12 +32,12 @@ GameGenerator.prototype.renderLineups = function(team){
 	var answer = "<table>" + this.renderTableHead(["Name", "Position", "AVG"]);
 	for (var i = 0; i < team.lineup.length; i++){
 		var player = team.lineup[i];
-		var line = this.renderTableRow([player.printName(), player.position, player.battingAvg]);
+		var line = this.renderTableRow([player.printName(), player.position, numeral(player.battingAvg).format('.000')]);
 		answer = answer.concat(line);
 	}
 	answer = answer.concat("</table>");
 	answer = answer.concat("</br>Pitcher: " + team.bullpen[0].printName());
-	return answer;
+	return head + answer;
 };
 
 // Below this line -- all stuff from other files, used here to avoid understanding something
@@ -99,7 +92,7 @@ GameGenerator.prototype.generatePitcher = function(pitcher){
 	var last = this.randomFromArray(lastNames);
 	var wins = Math.round(2 + Math.random()*15);
 	var losses = Math.round(2 + Math.random()*15);
-	var strikePct = Math.round(.5 + Math.random()*.4);
+	var strikePct = .6;
 	var ERA = Math.round(700 + Math.random()*500)/200;
 	
 	var pitcher = new Pitcher(first, last, wins, losses, strikePct, ERA);

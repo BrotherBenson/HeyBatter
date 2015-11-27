@@ -1,7 +1,6 @@
 TeamGenerator = function(){ };
 
 TeamGenerator.prototype.init = function () {
-	console.log("PlayerGenerator.js loaded");
 	firstInitials = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 	lastNames = ["SMITH", "JOHNSON", "WILLIAMS", "BROWN", "JONES", "MILLER", "DAVIS", "GARCIA", "RODRIGUEZ", "WILSON", "MARTINEZ", "ANDERSON", "TAYLOR", "THOMAS", "HERNANDEZ", "MOORE", "MARTIN", "JACKSON", "THOMPSON", "WHITE", "LOPEZ", "LEE", "GONZALEZ", "HARRIS", "CLARK", "LEWIS", "ROBINSON", "WALKER", "PEREZ", "HALL", "YOUNG", "ALLEN", "SANCHEZ", "WRIGHT", "KING", "SCOTT", "GREEN", "BAKER", "ADAMS", "NELSON", "HILL", "RAMIREZ", "CAMPBELL", "MITCHELL", "ROBERTS", "CARTER", "PHILLIPS"];
 	
@@ -77,7 +76,7 @@ TeamGenerator.prototype.renderPlayersTable = function(players){
 	var answer = "<h4>Players</h4><table>" + this.renderTableHead(["Name", "Position", "AVG"]);
 	for (var i = 0; i < players.length; i++){
 		var player = players[i];
-		var line = this.renderTableRow([player.printName(), player.position, player.battingAvg]);
+		var line = this.renderTableRow([player.printName(), player.position, numeral(player.battingAvg).format('.000')]);
 		answer = answer.concat(line);
 	}
 	answer = answer +  "</table>";
@@ -88,7 +87,7 @@ TeamGenerator.prototype.renderBullpenTable = function(pitchers){
 	var answer = "<h4>Bullpen</h4><table>" + this.renderTableHead(["Name", "Role", "Record", "ERA"]);
 	for (var i = 0; i < pitchers.length; i++){
 		var pitcher = pitchers[i];
-		var line = this.renderTableRow([pitcher.printName(), pitcher.role, pitcher.printRecord(), pitcher.era]);
+		var line = this.renderTableRow([pitcher.printName(), pitcher.role, pitcher.printRecord(), numeral(pitcher.era).format('0.00')]);
 		answer = answer.concat(line);
 	}
 	answer = answer +  "</table>";

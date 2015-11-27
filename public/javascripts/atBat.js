@@ -1,7 +1,6 @@
 AtBat = function (){ };
 
 AtBat.prototype.init = function () {
-	console.log("Heybatter.js loaded");
 };
 
 AtBat.prototype.bindEvents = function() {
@@ -68,9 +67,7 @@ AtBat.prototype.atBat = function(battingAverage, strikePercentage) {
 		outcome = "Take your base.";
 	}
 
-	return $("#outcomes").append(
-		"<li>" + outcome + "</li>"
-	);
+	return outcome;
 };
 
 AtBat.prototype.throwPitch = function(battingAverage, strikePercentage) {
