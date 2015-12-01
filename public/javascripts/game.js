@@ -1,8 +1,7 @@
 Game = function(homeTeam, awayTeam){
 	this.homeTeam = homeTeam,
 	this.awayTeam = awayTeam,
-	this.inning = 1,
-	this.isTop = true,
+	this.innings = [],
 	this.homeTeam.batterIndex = 0,
 	this.homeTeam.pitcherIndex = 0,
 	this.homeTeam.runs = 0,
@@ -16,15 +15,67 @@ Game.prototype.init = function(){
 };
 
 Game.prototype.bindEvents = function(){
-	$('.batter-up').on(
+	$('.play-game').on(
 		'click',
-		$.proxy(this.handleBatterUp, this)
+		$.proxy(this.playGame, this)
 	);
+};
 
-	$('.pitch').on(
-		'click',
-		$.proxy(this.handlePitch, this)
-	);
+Game.prototype.playGame = function(){
+	for (var i = 1; i < 10; i++){
+		this.simulateInning(i);
+	}
+};
+
+Game.prototype.simulateInning = function(i){
+	var inning = new Inning(this.homeTeam, this.awayTeam, i);
+	var awayScore = this.getAwayScore();
+	this.awayTeam.runs += awayScore;
+
+	console.log((i).toString() + "Away :" + awayScore);
+
+	var homeScore = this.getHomeScore();
+	this.homeTeam.runs += homeScore;
+
+	console.log((i).toString() + "Home :" + homeScore);
+
+	var awaySelector = '.away-'+((i).toString());
+	var homeSelector = '.home-'+((i).toString());
+
+	$(awaySelector).html(awayScore);
+	$(homeSelector).html(homeScore);
+
+	console.log(this.awayTeam.runs);
+	console.log(this.homeTeam.runs);
+
+	$('.away-team-runs').html(this.awayTeam.runs);
+	$('.home-team-runs').html(this.homeTeam.runs);
+};
+
+Game.prototype.getAwayScore = function(){
+	var effort = Math.random();
+	if (effort > .9){
+		return 2;
+	}
+	else if (effort > .7){
+		return 1;
+	}
+	else {
+		return 0;
+	}
+};
+
+Game.prototype.getHomeScore = function(){
+	var effort = Math.random();
+	if (effort > .8){
+		return 2;
+	}
+	else if (effort > .6){
+		return 1;
+	}
+	else {
+		return 0;
+	}
 };
 
 Game.prototype.currentPitcher = function(){
@@ -55,5 +106,8 @@ Game.prototype.handleBatterUp = function(){
 	else{
 		this.awayTeam.batterIndex += 1;
 	}
-	this.currentAtBat = new AtBat(this.currentPitcher(), this.currentBatter());
+
+	var atBat = new AtBat(this.currentPitcher(), this.currentBatter());
+	this.awayAtBats.push(atBat.atbat());
+	console.log(this.awayAtBats);
 };

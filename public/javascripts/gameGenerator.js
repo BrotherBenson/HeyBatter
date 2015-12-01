@@ -1,7 +1,6 @@
 GameGenerator = function(){};
 
 GameGenerator.prototype.init = function(){
-	console.log("GameGenerator.js loaded");
 };
 
 GameGenerator.prototype.bindEvents = function(){
@@ -24,7 +23,8 @@ GameGenerator.prototype.startGame = function(){
 GameGenerator.prototype.renderBoxScore = function(){
 	$('.now-pitching').html("Pitching: <span class='pitcher'></span>");
 	$('.now-batting').html("Batting: <span class='batter'></span>");
-	return "<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>R</th><th>H</th><th>E</th></tr><tr class='away-score'><td>L.A.</td><td class='away-1'></td><td class='away-2'></td><td class='away-3'></td><td class='away-4'></td><td class='away-5'></td><td class='away-6'></td><td class='away-7'></td><td class='away-8'></td><td class='away-8'></td><td class='away-team-runs'>0</td><td class='away-team-hits'>0</td><td class='away-team-errors'>0</td></tr><tr class = 'home-score'><td>BOS</td><td class='home-1'></td><td class='home-2'></td><td class='home-3'></td><td class='home-4'></td><td class='home-5'></td><td class='home-6'></td><td class='home-7'></td><td class='home-8'></td><td class='home-9'></td><td class='home-team-runs'>0</td><td class='home-team-hits'>0</td><td class='home-team-errors'>0</td></tr></table>";
+	$('.bso').html("B: <span class='balls-count'>0</span> S: <span class='strikes-count'>0</span> O: <span class='outs-count'>0</span>");
+	return "<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>R</th><th>H</th><th>E</th></tr><tr class='away-score'><td>L.A.</td><td class='away-1'></td><td class='away-2'></td><td class='away-3'></td><td class='away-4'></td><td class='away-5'></td><td class='away-6'></td><td class='away-7'></td><td class='away-8'></td><td class='away-9'></td><td class='away-team-runs'>0</td><td class='away-team-hits'>0</td><td class='away-team-errors'>0</td></tr><tr class = 'home-score'><td>BOS</td><td class='home-1'></td><td class='home-2'></td><td class='home-3'></td><td class='home-4'></td><td class='home-5'></td><td class='home-6'></td><td class='home-7'></td><td class='home-8'></td><td class='home-9'></td><td class='home-team-runs'>0</td><td class='home-team-hits'>0</td><td class='home-team-errors'>0</td></tr></table>";
 };
 
 GameGenerator.prototype.renderLineups = function(team){

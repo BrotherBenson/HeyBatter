@@ -9,37 +9,45 @@
 
 <body>
 	<main class="container-fluid" role="tabpanel">
-		<!-- AT BAT AT BAT AT BAT AT BAT AT BAT -->
-		<section class="row at-bat">
-			<section class="col-sm-2">
-				<h2>At Bat</h2>
-				<form id="hey-batter-batter">
-					<section class="form-group">
-						<label for="batting-average">Batting Average</label>
-						<input type="text" class="form-control" id="batting-average" placeholder=".300">
-					</section>
-
-					<section class="form-group">
-						<label for="strike-percentage">Strike Percentage</label>
-						<input type="text" class="form-control" id="strike-percentage" placeholder=".600">
-					</section>
-
-					<button type="submit" class="btn btn-primary">Step Up To The Plate</button>
-				</form>
+		<!-- GAME GAME GAME GAME GAME-->
+		<section class="row league">
+			<section class="col-sm-3">
+				<h2>League</h2>
+				<button type='submit' class='btn btn-primary create-league'>Create League</button>
 			</section>
-
-			<section class="col-sm-8">
-				<ul class="list-unstyled" id="outcomes">
-				</ul>
+			<section class="col-sm-3 north">
+			</section>
+			<section class="col-sm-3 south">
+			</section>
+			<section class="col-sm-3 west">
 			</section>
 		</section>
-
-
+		<section class="row game">
+			<section class="col-sm-2">
+				<h2>Game</h2>
+				<button type="submit" class="btn btn-primary play-ball">Play ball!</button>
+				<button type='submit' class='btn btn-primary play-game'>Play game</button>
+			</section>
+			<section class="col-sm-4">
+				<section class="box-score">
+				</section>
+				<section class="now-pitching">
+				</section>
+				<section class="now-batting">
+				</section>
+				<section class="bso">
+				</section>
+			</section>
+			<section class="col-sm-3 boston-lineup">
+			</section>
+			<section class="col-sm-3 losangeles-lineup">
+			</section>			
+		</section>
 
 		<!-- PLAYER PLAYER PLAYER PLAYER PLAYER PLAYER -->
 		<section class="row player-generator">
 			<section class="col-sm-2">
-				<h2>Team Generator</h2>
+				<h2>Team</h2>
 				<button type="submit" class="btn btn-primary create-team">Create Teams</button>
 			</section>
 			<section class="col-sm-5 boston">
@@ -48,37 +56,19 @@
 			</section>
 		</section>
 
-		<!-- GAME GAME GAME GAME GAME-->
-		<section class="row game">
-			<section class="col-sm-2">
-				<h2>Game</h2>
-				<button type="submit" class="btn btn-primary play-ball">Play ball!</button>
-				<button type='submit' class='btn btn-primary batter-up'>Batter up</button>
-				<button type='submit' class='btn btn-primary at-bat'>At Bat</button>
-			</section>
-			<section class="col-sm-4">
-				<section class="box-score">
-				</section>
-				<section class="now-pitching">
-				</section>
-				<section class="now-batting">
-					<span class="batter"></span>
-				</section>
-			</section>
-			<section class="col-sm-3 boston-lineup">
-			</section>
-			<section class="col-sm-3 losangeles-lineup">
-			</section>			
-		</section>
 	</main>
 	<script type="text/javascript" src="./javascripts/numeral.min.js"></script>
 	<script type="text/javascript" src="./javascripts/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="./javascripts/atBat.js"></script>
 	<script type="text/javascript" src="./javascripts/coach.js"></script>
 	<script type="text/javascript" src="./javascripts/player.js"></script>	
-	<script type="text/javascript" src="./javascripts/game.js"></script>
 	<script type="text/javascript" src="./javascripts/team.js"></script>
+	<script type="text/javascript" src="./javascripts/division.js"></script>
+	<script type="text/javascript" src="./javascripts/league.js"></script>
+	<script type="text/javascript" src="./javascripts/atBat.js"></script>
+	<script type="text/javascript" src="./javascripts/inning.js"></script>
+	<script type="text/javascript" src="./javascripts/game.js"></script>
 	<script type="text/javascript" src="./javascripts/teamGenerator.js"></script>
+	<script type="text/javascript" src="./javascripts/leagueGenerator.js"></script>
 	<script type="text/javascript" src="./javascripts/gameGenerator.js"></script>
 	<script type="text/javascript" src="./javascripts/pageManager.js"></script>
 	

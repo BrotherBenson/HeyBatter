@@ -1,4 +1,4 @@
-function Player(firstName, lastName, position, battingAvg) {
+Player = function(firstName, lastName, position, battingAvg) {
 	this.first = firstName,
 	this.last = lastName,
 	this.position = position,
