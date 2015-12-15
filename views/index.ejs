@@ -3,8 +3,8 @@
 
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 	<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 </head>
 
 <body>
@@ -27,6 +27,8 @@
 				<h2>Game</h2>
 				<button type="submit" class="btn btn-primary play-ball">Play ball!</button>
 				<button type='submit' class='btn btn-primary play-game'>Play game</button>
+				<button type='submit' class='btn btn-primary play-inning'>Play inning</button>
+				<button type='submit' class='btn btn-primary batter-up'>Batter up!</button>
 			</section>
 			<section class="col-sm-4">
 				<section class="box-score">
@@ -36,6 +38,12 @@
 				<section class="now-batting">
 				</section>
 				<section class="bso">
+				</section>
+				<section class="line-score">
+					<section class="away-line-score">
+					</section>
+					<section class="home-line-score">
+					</section>
 				</section>
 			</section>
 			<section class="col-sm-3 boston-lineup">
@@ -61,15 +69,19 @@
 	<script type="text/javascript" src="./javascripts/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="./javascripts/coach.js"></script>
 	<script type="text/javascript" src="./javascripts/player.js"></script>	
+
 	<script type="text/javascript" src="./javascripts/team.js"></script>
 	<script type="text/javascript" src="./javascripts/division.js"></script>
 	<script type="text/javascript" src="./javascripts/league.js"></script>
+	
 	<script type="text/javascript" src="./javascripts/atBat.js"></script>
 	<script type="text/javascript" src="./javascripts/inning.js"></script>
 	<script type="text/javascript" src="./javascripts/game.js"></script>
+
 	<script type="text/javascript" src="./javascripts/teamGenerator.js"></script>
 	<script type="text/javascript" src="./javascripts/leagueGenerator.js"></script>
 	<script type="text/javascript" src="./javascripts/gameGenerator.js"></script>
+
 	<script type="text/javascript" src="./javascripts/pageManager.js"></script>
 	
 	<script type="text/javascript">		
