@@ -1,5 +1,5 @@
 TeamGenerator = function(){
-	
+	teamID = 1;
 };
 
 TeamGenerator.prototype.init = function () {
@@ -11,7 +11,8 @@ TeamGenerator.prototype.generateTeam = function(city){
 	var playerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("DH")];
 	var bullpenArray = [this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("SU"), this.generatePitcher("CL") ];
 	var coachArray = [this.generateCoach("Bench"), this.generateCoach("Base"), this.generateCoach("Hitting"), this.generateCoach("Pitching"), this.generateCoach("Strength & Conditioning")];
-	return new Team(city, playerArray, bullpenArray, coachArray);
+	teamID++;
+	return new Team(city, playerArray, bullpenArray, coachArray, teamID);
 };
 
 TeamGenerator.prototype.generatePlayer = function(position){

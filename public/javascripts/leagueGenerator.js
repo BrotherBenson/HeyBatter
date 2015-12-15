@@ -22,26 +22,10 @@ LeagueGenerator.prototype.generateLeague = function(){
 	var southTeams = this.createDivision(citiesSouthDivision, "South");
 	var westTeams = this.createDivision(citiesWestDivision, "West");
 
-	var league = new League([northTeams, southTeams, westTeams], "International League")
-	this.renderLeagueTable(league);
-};
-
-LeagueGenerator.prototype.renderLeagueTable = function(league){
-	$('.north').html(this.renderDivisionTable(league.divisionArray[0]));
-	$('.south').html(this.renderDivisionTable(league.divisionArray[1]));
-	$('.west').html(this.renderDivisionTable(league.divisionArray[2]));
-};
-
-LeagueGenerator.prototype.renderDivisionTable = function(division){
-	var header = "<h3>" + division.divisionName + "</h3><table>" + this.utility.renderTableHead(["Hometown","W-L"]);
-	
-	var tableBody = "";
-	for (var i = 0; i < division.teamArray.length; i++){
-		var team = division.teamArray[i];
-		tableBody = tableBody.concat(this.utility.renderTableRow([team.city, "0-0"]));
-	}
-	tableBody = tableBody.concat("</table>");
-	return header + tableBody;
+	var league = new League([northTeams, southTeams, westTeams], "International League");
+	league.assembleTeamArray();
+	league.bindEvents();
+	this.utility.renderLeagueTable(league);
 };
 
 LeagueGenerator.prototype.createDivision = function(citiesArray, divisionName){

@@ -8,10 +8,7 @@ AtBat = function (batter, pitcher){
 };
 
 AtBat.prototype.bindEvents = function (){
-	$('.simulate-at-bat').on(
-		'click',
-		$.proxy(this.simAtBat, this)
-	);
+
 };
 
 AtBatOutcome = function (){
