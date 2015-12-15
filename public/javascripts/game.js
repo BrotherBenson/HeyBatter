@@ -13,7 +13,8 @@ Game = function(homeTeam, awayTeam){
 	this.awayTeam.pitcherIndex = 0,
 	this.awayTeam.runs = 0,
 
-	this.isComplete = false
+	this.isComplete = false,
+	this.utility = new Utility();
 };
 
 Game.prototype.init = function(){
@@ -118,33 +119,15 @@ Game.prototype.renderLineScore = function(){
 
 Game.prototype.renderLineups = function(team){
 	var head = "<h4>" + team.city + "</h4>";
-	var answer = "<table>" + this.renderTableHead(["Name", "Position", "AVG"]);
+	var answer = "<table>" + this.utility.renderTableHead(["Name", "Position", "AVG"]);
 	for (var i = 0; i < team.lineup.length; i++){
 		var player = team.lineup[i];
-		var line = this.renderTableRow([player.printName(), player.position, numeral(player.battingAvg).format('.000')]);
+		var line = this.utility.renderTableRow([player.printName(), player.position, numeral(player.battingAvg).format('.000')]);
 		answer = answer.concat(line);
 	}
 	answer = answer.concat("</table>");
 	answer = answer.concat("</br>Pitcher: " + team.bullpen[0].printName());
 	return head + answer;
-};
-
-Game.prototype.renderTableHead = function(arr){
-	var answer = "<tr>";
-	for (var i = 0; i < arr.length; i++){
-		answer = answer.concat("<th>"+arr[i]+"</th>")
-	}
-	answer += "</tr>";
-	return answer;
-};
-
-Game.prototype.renderTableRow = function(arr){
-	var answer = "<tr>";
-	for (var i = 0; i < arr.length; i++){
-		answer = answer.concat("<td>"+arr[i]+"</td>")
-	}
-	answer += "</tr>";
-	return answer;
 };
 
 // quick helping functions

@@ -7,13 +7,6 @@ TeamGenerator.prototype.init = function () {
 	lastNames = ["SMITH", "JOHNSON", "WILLIAMS", "BROWN", "JONES", "MILLER", "DAVIS", "GARCIA", "RODRIGUEZ", "WILSON", "MARTINEZ", "ANDERSON", "TAYLOR", "THOMAS", "HERNANDEZ", "MOORE", "MARTIN", "JACKSON", "THOMPSON", "WHITE", "LOPEZ", "LEE", "GONZALEZ", "HARRIS", "CLARK", "LEWIS", "ROBINSON", "WALKER", "PEREZ", "HALL", "YOUNG", "ALLEN", "SANCHEZ", "WRIGHT", "KING", "SCOTT", "GREEN", "BAKER", "ADAMS", "NELSON", "HILL", "RAMIREZ", "CAMPBELL", "MITCHELL", "ROBERTS", "CARTER", "PHILLIPS"];
 };
 
-TeamGenerator.prototype.bindEvents = function (){
-	$(".create-team").on(
-		"click",
-		$.proxy(this.generateTeams, this)
-	);
-};
-
 TeamGenerator.prototype.generateTeam = function(city){
 	var playerArray = [this.generatePlayer("1B"), this.generatePlayer("2B"), this.generatePlayer("3B"), this.generatePlayer("SS"), this.generatePlayer("RF"), this.generatePlayer("CF"), this.generatePlayer("LF"), this.generatePlayer("C"), this.generatePlayer("DH")];
 	var bullpenArray = [this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("SP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("RP"), this.generatePitcher("SU"), this.generatePitcher("CL") ];

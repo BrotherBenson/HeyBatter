@@ -2,18 +2,15 @@ PageManager = function () { };
 
 PageManager.prototype.init = function(){
 	this.renderVariables();
-	this.teamGenerator = new TeamGenerator();
 	this.gameGenerator = new GameGenerator();
 	this.leagueGenerator = new LeagueGenerator();
 
-	this.teamGenerator.init();
 	this.leagueGenerator.init();
 
 	this.bindEvents();
 };
 
 PageManager.prototype.bindEvents = function(){
-	this.teamGenerator.bindEvents();
 	this.gameGenerator.bindEvents();
 	this.leagueGenerator.bindEvents();
 };
