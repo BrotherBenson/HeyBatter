@@ -10,6 +10,10 @@ League.prototype.bindEvents = function(){
 		'click',
 		$.proxy(this.simSeason, this)
 	);
+	$('.pick-champs').on(
+		'click',
+		$.proxy(this.pickDivisionChamps, this)
+	);
 };
 
 League.prototype.assembleTeamArray = function(){
@@ -57,6 +61,29 @@ League.prototype.homeGames = function(i){
 		}
 	}
 	return answer;
+};
+
+League.prototype.pickDivisionChamps = function(){
+	for (var i = 0; i < this.divisionArray.length; i++){
+		var winner = this.divisionArray[i].pickChamp();
+		console.log(winner);
+		var selector = ".team-" + winner.teamID.toString();
+		console.log(selector);
+		$(selector).addClass('champ');
+	}
+};
+
+League.prototype.pickWildCards = function(){
+	var champs = [];
+	for (var i = 0; this.divisionArray.length; i++){
+		champs.push(this.divisionArray.champ);
+	}
+	var inTheHunt = [];
+	for (var i = 0; this.teamArray.length; i++){
+		if (this.teamArray[i].isChamp == false){
+			inTheHunt.push(this.teamArray[i]);
+		}
+	}
 };
 
 League.prototype.simSeasonGame = function(twoTeamArray){
