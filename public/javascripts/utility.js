@@ -32,6 +32,12 @@ Utility.prototype.renderLeagueTable = function(league){
 	$('.west').html(this.renderDivisionTable(league.divisionArray[2]));
 };
 
+Utility.prototype.renderSeasonTable = function(season){
+	$('.north').html(this.renderDivisionTable(season.divisionArray[0]));
+	$('.south').html(this.renderDivisionTable(season.divisionArray[1]));
+	$('.west').html(this.renderDivisionTable(season.divisionArray[2]));
+};
+
 Utility.prototype.renderDivisionTable = function(division){
 	var header = "<h3>" + division.divisionName + "</h3><table>" + this.renderTableHead(["Hometown","W-L"]);
 	
@@ -49,5 +55,18 @@ Utility.prototype.renderDivisionTableRow = function(team){
 	answer = answer.concat("<td class='city'>"+team.city+"</td>");
 	answer = answer.concat("<td class='wins-losses'>"+team.wins+"-"+team.losses+"</td>");
 	answer += "</tr>";
+	return answer;
+};
+
+Utility.prototype.renderPlayoffTable = function(playoffs){
+	var answer = "";
+	answer = answer.concat(this.renderTableHead(["Matchup", "Series Score"]));
+	for (var i = 0; i < playoffs.series.length; i++){
+		answer = answer.concat(this.renderTableRow([
+			(playoffs.series[i].team1.city + " vs. " + playoffs.series[i].team2.city), 
+			(playoffs.series[i].team1wins + "-" + playoffs.series[i].team2wins)
+		]));
+	}
+	answer = answer.concat("</table>");
 	return answer;
 };

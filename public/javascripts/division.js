@@ -5,7 +5,7 @@ function Division(teamArray, divisionName){
 
 Division.prototype.pickChamp = function(){
 	var champ = this.teamArray[0];
-	for (var i = 0; i < this.teamArray.length; i++){
+	for (var i = 1; i < this.teamArray.length; i++){
 		var team = this.teamArray[i];
 		if (team.wins > champ.wins){
 			champ = team;

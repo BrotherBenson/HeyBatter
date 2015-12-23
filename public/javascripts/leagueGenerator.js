@@ -23,15 +23,14 @@ LeagueGenerator.prototype.generateLeague = function(){
 	var westTeams = this.createDivision(citiesWestDivision, "West");
 
 	var league = new League([northTeams, southTeams, westTeams], "International League");
-	league.assembleTeamArray();
-	league.bindEvents();
+	league.init();
 	this.utility.renderLeagueTable(league);
 };
 
 LeagueGenerator.prototype.createDivision = function(citiesArray, divisionName){
 	var teamArray = [];
 	for (var i = 0; i < citiesArray.length; i++){
-		var team = this.teamGenerator.generateTeam(citiesArray[i]);
+		var team = this.teamGenerator.generateTeam(citiesArray[i], divisionName);
 		teamArray.push(team);
 	}
 	return new Division(teamArray, divisionName);

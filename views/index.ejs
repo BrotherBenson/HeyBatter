@@ -14,14 +14,29 @@
 			<section class="col-sm-3">
 				<h2>League</h2>
 				<button type='submit' class='btn btn-primary create-league'>Create League</button>
-				<button type='submit' class='btn btn-primary sim-season'>Sim Season</button>
-				<button type='submit' class='btn btn-primary pick-champs'>Pick Champs</button>
+				<button type='submit' class='btn btn-primary init-season'>Initialize Season</button>
 			</section>
 			<section class="col-sm-3 north">
 			</section>
 			<section class="col-sm-3 south">
 			</section>
 			<section class="col-sm-3 west">
+			</section>
+		</section>
+		<section class="row season">
+			<section class ="col-sm-3">
+				<h2>Season</h2>
+				<button type='submit' class='btn btn-primary sim-season'>Sim Season</button>
+				<button type='submit' class='btn btn-primary pick-champs'>Pick Champs</button>
+				<button type='submit' class='btn btn-primary set-playoffs'>Pick Wildcard</button>
+			</section>
+		</section>
+		<section class="row playoffs">
+			<section class="col-sm-3">
+				<h2>Playoffs</h2>
+				<button type='submit' class='btn btn-primary sim-playoffs'>Sim Playoffs</button>
+			</section>
+			<section class="playoffs-table">
 			</section>
 		</section>
 		<!-- GAME GAME GAME GAME GAME -->
@@ -58,6 +73,8 @@
 	</main>
 	<script type="text/javascript" src="./javascripts/numeral.min.js"></script>
 	<script type="text/javascript" src="./javascripts/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="./javascripts/underscore-min.js"></script>
+
 	<script type="text/javascript" src="./javascripts/utility.js"></script>
 
 	<script type="text/javascript" src="./javascripts/coach.js"></script>
@@ -69,6 +86,10 @@
 	<script type="text/javascript" src="./javascripts/atBat.js"></script>
 	<script type="text/javascript" src="./javascripts/inning.js"></script>
 	<script type="text/javascript" src="./javascripts/game.js"></script>
+
+	<script type="text/javascript" src="./javascripts/playoffSeries.js"></script>
+	<script type="text/javascript" src="./javascripts/playoffs.js"></script> 
+	<script type="text/javascript" src="./javascripts/season.js"></script>
 
 	<script type="text/javascript" src="./javascripts/teamGenerator.js"></script>
 	<script type="text/javascript" src="./javascripts/leagueGenerator.js"></script>
