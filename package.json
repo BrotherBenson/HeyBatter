@@ -6,8 +6,10 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "ejs": "2.3.4",
     "express": "~4.12.4",
-    "underscore": "1.8.3",
-    "ejs": "2.3.4"
+    "mongodb": "^2.1.2",
+    "mongoose": "^4.3.4",
+    "underscore": "1.8.3"
   }
 }

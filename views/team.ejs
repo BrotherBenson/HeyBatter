@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+</head>
+
+<body>
+	<main class="container-fluid" role="tabpanel">
+		<section class="row team">
+			<section class="col-sm-2">
+			<h2>Team</h2>
+			<button type="submit" class="btn btn-primary generate-team">Generate Team</button>
+			<button type="submit" class="btn btn-primary propose-trade">Propose Trade</button>
+		</section>
+	</main>
+
+	<script type="text/javascript" src="./javascripts/numeral.min.js"></script>
+	<script type="text/javascript" src="./javascripts/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="./javascripts/underscore-min.js"></script>
+
+	<script type="text/javascript" src="./javascripts/utility.js"></script>
+
+	<script type="text/javascript" src="./javascripts/coach.js"></script>
+	<script type="text/javascript" src="./javascripts/player.js"></script>	
+	<script type="text/javascript" src="./javascripts/team.js"></script>
+	<script type="text/javascript" src="./javascripts/division.js"></script>
+	<script type="text/javascript" src="./javascripts/league.js"></script>
+	
+	<script type="text/javascript" src="./javascripts/atBat.js"></script>
+	<script type="text/javascript" src="./javascripts/inning.js"></script>
+	<script type="text/javascript" src="./javascripts/game.js"></script>
+
+	<script type="text/javascript" src="./javascripts/playoffSeries.js"></script>
+	<script type="text/javascript" src="./javascripts/playoffs.js"></script> 
+	<script type="text/javascript" src="./javascripts/season.js"></script>
+
+	<script type="text/javascript" src="./javascripts/teamGenerator.js"></script>
+	<script type="text/javascript" src="./javascripts/leagueGenerator.js"></script>
+	<script type="text/javascript" src="./javascripts/gameGenerator.js"></script>
+
+	<script type="text/javascript" src="./javascripts/pageManager.js"></script>
+	
+	<script type="text/javascript">		
+		$(document).ready(function() {
+			var pageManager = new PageManager();
+			pageManager.init();	
+		});
+	</script>
+</body>
+
+</html>
