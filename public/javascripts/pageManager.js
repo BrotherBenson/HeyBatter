@@ -2,6 +2,7 @@ PageManager = function () { };
 
 PageManager.prototype.init = function(){
 	this.renderVariables();
+	this.teamGenerator = new TeamGenerator();
 	this.gameGenerator = new GameGenerator();
 	this.leagueGenerator = new LeagueGenerator();
 
@@ -13,6 +14,7 @@ PageManager.prototype.init = function(){
 PageManager.prototype.bindEvents = function(){
 	this.gameGenerator.bindEvents();
 	this.leagueGenerator.bindEvents();
+	this.teamGenerator.bindEvents();
 };
 
 PageManager.prototype.renderVariables = function(){

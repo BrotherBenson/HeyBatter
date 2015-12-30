@@ -14,6 +14,8 @@ GameGenerator.prototype.startGame = function(){
 	boston = this.generateBoston();
 	game = new Game(losAngeles, boston);
 	game.init();
+	$('.play-ball').hide();
+	game.commentary.introduceGame(game);
 };
 
 // Below this line -- all stuff from other files, used here to avoid understanding something
@@ -28,9 +30,9 @@ GameGenerator.prototype.generateLosAngeles = function() {
 };
 
 GameGenerator.prototype.randomFromArray = function(arr){
-	return(arr[Math.floor(Math.random()*(arr.length))]);
+	return (arr[Math.floor(Math.random()*(arr.length))]);
 };
 
 GameGenerator.prototype.randomFromRange = function(min, max){
-	return(min + Math.ceil(Math.random()*(max-min)));
+	return (min + Math.ceil(Math.random()*(max-min)));
 };

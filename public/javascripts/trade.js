@@ -27,5 +27,8 @@ Trade.prototype.counter = function(){
 };
 
 Offer = function(){
-
+	this.cashAmount = null,
+	this.cashTeam = null,
+	this.offerPlayerArray = [],
+	this.objectivePlayerArray = []
 };

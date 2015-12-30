@@ -29,3 +29,7 @@ table{
 .wildcard{
 	color: blue;
 }
+
+.undeveloped{
+	background-color: #999999;
+}

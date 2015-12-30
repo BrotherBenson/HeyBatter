@@ -14,12 +14,13 @@ Game = function(homeTeam, awayTeam){
 	this.awayTeam.runs = 0,
 
 	this.isComplete = false,
-	this.utility = new Utility();
+
+	this.utility = new Utility(),
+	this.commentary = new Commentary();
 };
 
 Game.prototype.init = function(){
 	$('.box-score').html(this.renderBoxScore());
-	$('.line-score').html(this.renderLineScore());
 	$('.boston-lineup').html(this.renderLineups(this.homeTeam));
 	$('.losangeles-lineup').html(this.renderLineups(this.awayTeam));
 	this.bindEvents();
@@ -44,14 +45,15 @@ Game.prototype.bindEvents = function(){
 Game.prototype.batterUp = function(){
 	var batter = this.currentBatter();
 	var pitcher = this.currentPitcher();
-	var atBat = new AtBat(batter, pitcher);
-	console.log(atBat);
-	atBat.bindEvents();
-	atBat.renderAtBatInfo();
+	var plateAppearance = new PlateAppearance(batter, pitcher);
+	console.log(plateAppearance);
+	plateAppearance.bindEvents();
+	plateAppearance.renderPlateAppearanceInfo();
+	$('.batter-up').hide();
+	this.commentary.introduceBatter(batter);
 };
 
 // game sim functions
-
 Game.prototype.playGame = function(){
 	for (var i = 1; i < 10; i++){
 		this.simulateInning(i);
@@ -113,10 +115,6 @@ Game.prototype.renderBoxScore = function(){
 	return "<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>R</th><th>H</th><th>E</th></tr><tr class='away-score'><td>L.A.</td><td class='away-1'></td><td class='away-2'></td><td class='away-3'></td><td class='away-4'></td><td class='away-5'></td><td class='away-6'></td><td class='away-7'></td><td class='away-8'></td><td class='away-9'></td><td class='away-team-runs'>0</td><td class='away-team-hits'>0</td><td class='away-team-errors'>0</td></tr><tr class = 'home-score'><td>BOS</td><td class='home-1'></td><td class='home-2'></td><td class='home-3'></td><td class='home-4'></td><td class='home-5'></td><td class='home-6'></td><td class='home-7'></td><td class='home-8'></td><td class='home-9'></td><td class='home-team-runs'>0</td><td class='home-team-hits'>0</td><td class='home-team-errors'>0</td></tr></table>";
 };
 
-Game.prototype.renderLineScore = function(){
-	$('.line-score').html("Stuff");
-};
-
 Game.prototype.renderLineups = function(team){
 	var head = "<h4>" + team.city + "</h4>";
 	var answer = "<table>" + this.utility.renderTableHead(["Name", "Position", "AVG"]);
@@ -133,8 +131,8 @@ Game.prototype.renderLineups = function(team){
 // quick helping functions
 
 Game.prototype.getAwayScore = function(){
-	var effort = Math.random();
-	if (effort > .9){
+	var effort = Math.random()
+;	if (effort > .9){
 		return 2;
 	}
 	else if (effort > .7){
@@ -187,7 +185,7 @@ Game.prototype.handleBatterUp = function(){
 		this.awayTeam.batterIndex += 1;
 	}
 
-	var atBat = new AtBat(this.currentPitcher(), this.currentBatter());
-	this.awayAtBats.push(atBat.atbat());
+	var plateAppearance = new PlateAppearance(this.currentPitcher(), this.currentBatter());
+	this.awayAtBats.push(plateAppearance.plateAppearance());
 	console.log(this.awayAtBats);
 };

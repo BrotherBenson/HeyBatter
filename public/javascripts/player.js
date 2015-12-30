@@ -25,7 +25,7 @@ function Pitcher(firstName, lastName, role, wins, losses, strikePct, ERA){
 	this.wins = wins,
 	this.losses = losses,
 	this.strikePct = strikePct,
-	this.era = ERA
+	this.era = ERA;
 };
 
 Pitcher.prototype.generatePitcher = function(role){

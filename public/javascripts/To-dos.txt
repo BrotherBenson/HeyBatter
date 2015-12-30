@@ -1,0 +1,32 @@
+TO-DOS
+
+Play a game
+	Strategy
+		Coach Signals
+			Batter -- Swing away, swing for contact, swing for power, don't swing, long at-bat, sac, bunt, fly
+			Runner -- Steal
+			Meeting on the Mound -- Confidence, Stamina, Focus
+		Pinch Hitter
+		Pinch Runner
+		Relief Pitcher
+
+Between games
+	Press Conference
+	Tailor Practices // Game-prep
+	Meet with Players
+	Meet with Coaches
+	Meet with Team
+	Make a trade
+	Set a lineup
+		
+	League Leaders
+
+Main Menu
+	New Game
+	New Season
+	New Playoffs
+	New Career
+		Coach
+		Player
+
+Start using mongodb like a real person
