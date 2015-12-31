@@ -52,8 +52,10 @@ TeamGenerator.prototype.generatePitcher = function(role){
 	var losses = Math.round(2 + Math.random()*15);
 	var strikePct = Math.round(.5 + Math.random()*.4);
 	var ERA = Math.round(700 + Math.random()*500)/200;
+	var deceptiveBallRatio = this.randomFromRange(.2, .6);
+	var deceptiveStrikeRatio = this.randomFromRange(.2, .6);
 	
-	var pitcher = new Pitcher(first, last, role, wins, losses, strikePct, ERA);
+	var pitcher = new Pitcher(first, last, role, wins, losses, strikePct, ERA, deceptiveBallRatio, deceptiveStrikeRatio);
 	return pitcher;
 };
 

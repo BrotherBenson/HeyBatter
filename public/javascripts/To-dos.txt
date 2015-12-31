@@ -1,4 +1,5 @@
 TO-DOS
+Figure out some way to simulate pitching a bunch of times so you can figure out what the frequency of things
 
 Play a game
 	Strategy
