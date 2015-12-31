@@ -7,21 +7,22 @@ PlateAppearance = function (batter, pitcher) {
 	this.plateOutcome = new PlateOutcome();
 };
 
+PlateOutcome = function(){
+	this.isStrikeout = false;
+	this.isWalk = false;
+	this.isHit = false;
+};
+
 Pitch = function () {
 	this.isStrike = false,
 	this.isBall = false,
 	this.isDeceptive = false,
-	this.outcome = new PitchOutcome();
+	this.pitchOutcome = new PitchOutcome();
 };
 
 PitchOutcome = function() {
+	this.swing = false,
 	this.contact = false;
-};
-
-PlateOutcome = function () {
-	this.isStrikeOut = false,
-	this.isWalk = false,
-	this.isHit = false;
 };
 
 HitOutcome = function () {
@@ -40,7 +41,8 @@ PlateAppearance.prototype.bindEvents = function() {
 
 // First, the pitcher makes the pitch
 PlateAppearance.prototype.pitch = function() {
-	
+	var thePitch = new Pitch();
+	thePitch["effort"] = Math.random();
 	var pitcher = this.pitcher;
 
 	// A pitchers strikePct -- if the pitch is outside of that, it's a ball
@@ -59,21 +61,21 @@ PlateAppearance.prototype.pitch = function() {
 	// Nondeceptive balls are above everything
 
 	// Balls
-	if(thePitch > strikeMax) {
-		thePitch.outcome["isBall"] = true;
+	if(thePitch["effort"] > strikeMax) {
+		thePitch.pitchOutcome["isBall"] = true;
 	
 		// Check for deception
 		if (thePitch <= deceptiveBallMax) {
-			thePitch.outcome["isDeceptive"] = true;
+			thePitch.pitchOutcome["isDeceptive"] = true;
 		}
 	}
 	// Strikes
 	else {
-		thePitch.outcome["isStrike"] = true;
+		thePitch.pitchOutcome["isStrike"] = true;
 
 		// Check for deception
 		if (thePitch > deceptiveStrikeMax) {
-			thePitch.outcome["isDeceptive"] = true;
+			thePitch.pitchOutcome["isDeceptive"] = true;
 		}
 	}
 
@@ -83,10 +85,10 @@ PlateAppearance.prototype.pitch = function() {
 
 PlateAppearance.prototype.swingDecision = function(pitch) {
 	// If the pitch is a non-deceptive strike or a deceptive ball, the batter will swing
-	if ((pitch.outcome["isStrike"] && !(pitch.outcome["isDeceptive"])) || (pitch.outcome["isBall"] && pitch.outcome["isDeceptive"])){
+	if ((pitch.pitchOutcome["isStrike"] && !(pitch.pitchOutcome["isDeceptive"])) || (pitch.pitchOutcome["isBall"] && pitch.pitchOutcome["isDeceptive"])){
 		// Here's the swing
 		var theSwing = Math.random();
-		pitch.outcome["swing"] = theSwing;
+		pitch.pitchOutcome["swing"] = theSwing;
 		this.handleSwing(pitch);
 	}
 	// If the batter doesn't swing, head straight to catching the ball.
@@ -100,7 +102,7 @@ PlateAppearance.prototype.handleSwing = function(pitch) {
 		// For now, non-deceptive strikes will have a boost, as they are easier to hit.
 
 	// non-deceptive strikes
-	if (pitch.outcome["isStrike"]) {
+	if (pitch.pitchOutcome["isStrike"]) {
 		pitch.contactQuality = this.determineContactQuality(.6, .7)
 		pitch.hitOutcome = this.handleContact(pitch);
 	}
@@ -136,6 +138,7 @@ PlateAppearance.prototype.handleContact = function(pitch) {
 
 	if (cq > .7){// Basehits
 		result["baseHit"] = true;
+		this.plateOutcome["isHit"] = true;
 		if (cq > .97) { // Homer
 			result["numberOfBases"] = 4;
 			console.log("HOMER");
@@ -170,7 +173,7 @@ PlateAppearance.prototype.handleContact = function(pitch) {
 };
 
 PlateAppearance.prototype.handleCatch = function(pitch){
-	if (pitch.outcome["isStrike"]) {
+	if (pitch.pitchOutcome["isStrike"]) {
 		console.log("STRIKE");
 		this.strikes++;
 		this.checkForStrikeout(this);
@@ -180,6 +183,7 @@ PlateAppearance.prototype.handleCatch = function(pitch){
 		this.balls++;
 		this.checkForWalk(this);
 	}
+	this.updateCount();
 };
 
 PlateAppearance.prototype.checkForWalk = function(plateAppearance) {
@@ -200,6 +204,10 @@ PlateAppearance.prototype.checkForStrikeout = function(plateAppearance) {
 	else{
 		return false;
 	}
+};
+
+PlateAppearance.prototype.updateCount = function(plateAppearance){
+	$(".bso").html("B: " + this.balls +  " S: " + this.strikes + "O: 0");
 };
 
 
